@@ -30,20 +30,63 @@ public class Student {
 
 
      //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
+    public String getGradeLevel() {
 //        // Determine the grade level of the student based on numberOfCredits
-//    }
+        String gradeLevel = "";
+        if (numberOfCredits <= 24) {
+            return "Freshman";
+        } else if (numberOfCredits <= 48 && numberOfCredits > 24) {
+            return "Sophomore";
+        } else if (numberOfCredits <= 72 && numberOfCredits > 48) {
+            return "Junior";
+        }else {
+            return "Senior";
+        }
+
+
+    }
 
     // TODO: Complete the addGrade method.
     public void addGrade(int courseCredits, double grade) {
         // Update the appropriate fields: numberOfCredits, gpa
+        numberOfCredits += courseCredits;
+        double totalQualityScore = grade * numberOfCredits;
+        gpa = totalQualityScore/numberOfCredits;
+
+
     }
 
-    // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
+// TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
+@Override
+public String toString() {
+    return name +
+            " ( Student ID: " + studentId +
+            " Number of Credits: "+ numberOfCredits +
+            " GPA: " + gpa + ")";
+    }
 
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+
+        Student student = (Student) o;
+
+        if (getStudentId() != student.getStudentId()) return false;
+        return getName().equals(student.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getStudentId();
+        return result;
+    }
 
     public String getName() {
         return name;
