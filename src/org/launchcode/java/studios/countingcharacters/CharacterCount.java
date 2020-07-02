@@ -15,16 +15,16 @@ public class CharacterCount {
      int length = myString.length();
 
      //Convert given string to an array of characters.
-     int[] numChars = new int[300];
+     int[] numChars = new int[length];
 
 
-     for(int i = 0; i < length; i++)
+     for(int i = 0; i <= length; i++)
          numChars[myString.charAt(i)] ++;
 
 
          //Initialize another array
       char [] charArray  = myString.toCharArray();
-      for ( int i = 0; i < length; i++) {
+      for ( int i = 0; i <= length; i++) {
           charArray[i] = myString.charAt(i);
           for (int j =0; j <=i; j++) {
               if (myString.charAt(i) == charArray[j]) {
